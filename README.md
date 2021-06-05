@@ -19,6 +19,12 @@ yarn build
 ```
 yarn lint
 ```
+### 涉及技术
+vue-cli3
+(https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create)
+```
+webpack
+```
+vue3
+```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

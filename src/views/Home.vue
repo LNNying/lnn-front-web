@@ -1,23 +1,23 @@
 <template>
     <div class="home">
         <img alt="Vue logo" src="../assets/logo.png">
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <el-input v-model="input"></el-input>
     </div>
 </template>
 
 <script>
-    // @ is an alias to /src
-    import HelloWorld from '@/components/HelloWorld.vue'
     import {ref} from 'vue'
 
     export default {
         name: 'Home',
-        components: {
-            HelloWorld
-        },
+        components: {},
         setup() {
             let refs = ref(12);
             console.log(refs);
+            let input = ref(32);
+            return {
+                input
+            }
         }
     }
 </script>
