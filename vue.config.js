@@ -19,7 +19,13 @@ module.exports = {
     chainWebpack: config => {
         config.resolve.symlinks(true);
         config.resolve.alias
-            .set('@', resolve('src'))
+            .set('@', resolve('src'));
+        config
+            .plugin('html')
+            .tap(args => {
+                args[0].title= '系统';
+                return args
+            })
     },
     // 修改图标
     pwa: {
