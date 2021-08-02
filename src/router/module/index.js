@@ -71,6 +71,61 @@ const baseRouter = {
                 noClosable: true,
                 noKeepAlive: true
             }
+        },
+        {
+            path: '/canvas-map',
+            name: 'canvas-map',
+            component: () => import('@/views/konva/CanvasMap.vue'),
+            meta: {
+                title: 'Canvas-Konva界面',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        },
+        {
+            path: '/canvas-image',
+            name: 'canvas-image',
+            component: () => import('@/views/konva/CanvasImage.vue'),
+            meta: {
+                title: 'Canvas-Konva-Image界面',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        },
+        {
+            path: '/canvas-curve',
+            name: 'canvas-curve',
+            component: () => import('@/views/konva/CanvasCurve.vue'),
+            meta: {
+                title: 'Canvas-Konva曲线',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        },
+        {
+            path: '/canvas-two',
+            name: 'canvas-two',
+            component: () => import('@/views/konva/CanvasTwo.vue'),
+            meta: {
+                title: 'Konva两个舞台',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        },
+        {
+            path: '/monitor-frame',
+            name: 'monitor-frame',
+            component: () => import('@/views/monitor/MonitorFrame.vue'),
+            meta: {
+                title: '监控外壳',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
         }
     ]
 };

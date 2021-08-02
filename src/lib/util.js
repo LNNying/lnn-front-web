@@ -89,5 +89,32 @@ util.duplicateSetArray = (arr) => {
     return [...new Set(arr)]
 };
 
+// 获取指定范围中随机数
+util.getRadomNum = (max, min) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+// 随机返回数组某个数据
+util.getRadomFromArr = (arr) => {
+    if (Array.isArray(arr)) {
+        throw Error(arr + '不是一个数组');
+    }
+    return arr[Math.floor(Math.random() * arr.length)];
+};
+
+// 对象转Map数据
+util.ObjToMap = (obj) => {
+  let objArr = Object.entries(obj);
+  return new Map(objArr);
+};
+
+// 是否为迭代对象
+util.isIterator = (data) => {
+    try {
+        return typeof data[Symbol.iterator] !== 'undefined';
+    } catch (e) {
+        throw Error(e);
+    }
+};
 
 export default util;
