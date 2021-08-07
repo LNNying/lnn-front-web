@@ -1,11 +1,11 @@
 <template>
-    <el-container class="main">
-        <el-aside style="background: red">
-            <div class="menu"></div>
+    <el-container class="ny-main">
+        <el-aside class="ny-menu" width="250px">
+            <main-menu :menu-list="menuList"></main-menu>
         </el-aside>
         <el-container>
-            <el-header class="header">Header</el-header>
-            <el-main class="main">
+            <el-header class="ny-header">Header</el-header>
+            <el-main class="ny-main">
                 <router-view v-slot="{ Component }">
                     <keep-alive>
                         <component :is="Component" />
@@ -17,8 +17,23 @@
 </template>
 
 <script>
+    import MainMenu from "../../components/menu/MainMenu";
+    import {computed, onMounted} from 'vue'
+    import {useStore} from 'vuex'
     export default {
-        name: "DefaultLayout"
+        name: "DefaultLayout",
+        components: {MainMenu},
+        setup() {
+            const STORE = useStore();
+            let menuList = computed(() => STORE.getters['index/menuList']);
+
+            onMounted(() => {
+
+            });
+            return {
+                menuList,
+            }
+        }
     }
 </script>
 

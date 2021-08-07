@@ -7,7 +7,6 @@
  */
 
 import Layout from '@/views/layout/DefaultLayout'
-import EmptyLayout from '@/views/layout/EmptyLayout'
 
 const homeRouter = {
     path: '/',
@@ -16,7 +15,7 @@ const homeRouter = {
     component: Layout,
     meta: {
         title: '首页',
-        icon: 'home-2-line'
+        hideInMenu: true
     },
     children: [
         {
@@ -44,9 +43,9 @@ const loginRouter = {
 const baseRouter = {
     path: '/base',
     name: 'base',
-    component: EmptyLayout,
+    component: Layout,
     meta: {
-        title: '',
+        title: '开发构造模板',
         icon: 'home-2-line'
     },
     children: [
@@ -122,6 +121,17 @@ const baseRouter = {
             component: () => import('@/views/monitor/MonitorFrame.vue'),
             meta: {
                 title: '监控外壳',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        },
+        {
+            path: '/monitor-rotate',
+            name: 'monitor-rotate',
+            component: () => import('@/views/konva/MulateRotate.vue'),
+            meta: {
+                title: 'konva 旋转',
                 icon: 'home-2-line',
                 noClosable: true,
                 noKeepAlive: true
