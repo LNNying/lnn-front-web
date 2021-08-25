@@ -61,8 +61,8 @@ konvaFun.createCanvasArrow = (ctx, type, x, y, ROUTE_INTERVAL_R, ROUTE_INTERVAL_
 
 konvaFun.createSimulateNodeData = () => {
     let nodeList = [];
-    for (let i = 0; i <50; i++) {
-        for (let j = 0; j < 60; j++) {
+    for (let i = 0; i <30; i++) {
+        for (let j = 0; j < 40; j++) {
             nodeList.push({
                 x: i,
                 y: j

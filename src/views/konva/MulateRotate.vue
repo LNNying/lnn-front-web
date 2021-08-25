@@ -1,5 +1,5 @@
 <template>
-    <div id="container"></div>
+    <div id="container" class="map"></div>
 </template>
 
 <script>
@@ -41,7 +41,7 @@
                     image: image,
                     width: 15,
                     height: 15,
-                    rotation: 72,
+                    rotation: 0,
                     offset: {
                         x: 7.5,
                         y: 7.5
@@ -57,7 +57,7 @@
                         easing: Konva.Easings.Linear,
                         duration: 1,
                         rotation: timer / 1000,
-                        onFinish : function() {
+                        onFinish: function() {
                             tween.destroy();
                         }
                     });
@@ -74,6 +74,10 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+    .map {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
 </style>

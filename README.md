@@ -36,6 +36,12 @@ vue3
         })
       }
 
+vue3 element 中el-date-pick 周数选择比实际多一天
+解决
+ <el-date-picker v-model="formItem.endDate" type="week" :format="`gggg 第 ${endWeek} 周`" placeholder="请选择日期" @change="changeEndDate" />
+
+ 在changeEndData 中处理得出当前周数endWeek
+
 
 // 技术
 Set

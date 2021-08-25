@@ -117,4 +117,24 @@ util.isIterator = (data) => {
     }
 };
 
+/**
+ * 86400000 = 24 * 60 * 60 * 1000
+ * valueOf 获取的是时间戳
+ * 获取一年的第一天
+ * 获取当前日期是今年的第几天
+ * 第几天加第一天的周数除以7
+ * @param date
+ */
+// 获取本年第几周
+util.getYearWeek = function (date) {
+    if (date instanceof Date) {
+        return;
+    }
+    let year = date.getFullYear();
+    let beginDate = new Date(year, 0, 1);
+    let millisDiff = Math.round((date.valueOf() - beginDate.valueOf()) / 86400000);
+    let week = Math.ceil((millisDiff - beginDate.getDay()) / 7);
+    return week;
+};
+
 export default util;

@@ -116,17 +116,6 @@ const baseRouter = {
             }
         },
         {
-            path: '/monitor-frame',
-            name: 'monitor-frame',
-            component: () => import('@/views/monitor/MonitorFrame.vue'),
-            meta: {
-                title: '监控外壳',
-                icon: 'home-2-line',
-                noClosable: true,
-                noKeepAlive: true
-            }
-        },
-        {
             path: '/monitor-rotate',
             name: 'monitor-rotate',
             component: () => import('@/views/konva/MulateRotate.vue'),
@@ -139,8 +128,34 @@ const baseRouter = {
         }
     ]
 };
+
+const kownRouter = {
+    path: '/kown',
+    name: 'kown',
+    component: Layout,
+    meta: {
+        title: '知识点',
+        icon: 'home-2-line'
+    },
+    children: [
+        {
+            path: '/directive',
+            name: 'directive',
+            component: () => import('@/views/vue/Directive.vue'),
+            meta: {
+                title: '自定义指令',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        }
+    ]
+};
+
+
 export default [
     homeRouter,
     loginRouter,
-    baseRouter
+    baseRouter,
+    kownRouter
 ];

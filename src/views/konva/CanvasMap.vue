@@ -27,11 +27,15 @@
                 }
             ];
             // const CLONE_RECT = new Konva.Rect();
-            const IMAGE_CLONE = new Konva.Image({
-                width: NODE_WIDTH_HEIGHT,
-                height: NODE_WIDTH_HEIGHT
-            });
-
+            // const IMAGE_CLONE = new Konva.Image({
+            //     width: NODE_WIDTH_HEIGHT,
+            //     height: NODE_WIDTH_HEIGHT
+            // });
+            const CLONE_RECT = new Konva.Rect();
+            let scaleOffset = {
+                x: 0,
+                y: 0,
+            };
             let scale = 1;
             let loadImage = {};
             let errorNum = 0;
@@ -72,19 +76,20 @@
                     let item = NODE_LIST[i];
                     let x = (item.x + 1) * INTERVAL * 1.1;
                     let y = (item.y + 1) * INTERVAL * 1.1;
-                    // let rect = CLONE_RECT.clone({
-                    //     x: x,
-                    //     y: y,
-                    //     name: x + '-' + y,
-                    //     width: NODE_WIDTH_HEIGHT,
-                    //     height: NODE_WIDTH_HEIGHT,
-                    // });
-                    let rect = IMAGE_CLONE.clone({
+                    let rect = CLONE_RECT.clone({
                         x: x,
                         y: y,
                         name: x + '-' + y,
-                        image: loadImage['rect']
+                        width: NODE_WIDTH_HEIGHT,
+                        height: NODE_WIDTH_HEIGHT,
+                        fill: COLOR_OBJ.rectFill
                     });
+                    // let rect = IMAGE_CLONE.clone({
+                    //     x: x,
+                    //     y: y,
+                    //     name: x + '-' + y,
+                    //     image: loadImage['rect']
+                    // });
                     stageObj.mapLayer.add(rect);
                 }
                 stageObj.mapLayer.draw();
@@ -92,13 +97,13 @@
 
             // 绑定方法
             function bindMethod() {
-                stageObj.stage.on('mousedown', (e) => {
-                    console.log(e);
+                stageObj.stage.on('mousedown', () => {
+                    // console.log(e);
                     isDown = true;
                     dataObj.frameOffset.show = false;
                 });
                 stageObj.stage.on('mouseup', (e) => {
-                    console.log({x: stageObj.stage.getX(), y: stageObj.stage.getY()});
+                    // console.log({x: stageObj.stage.getX(), y: stageObj.stage.getY()});
                     isDown = false;
                     if (dataObj.clickNode) {
                         dataObj.clickNode.fill(COLOR_OBJ.rectFill);
@@ -108,6 +113,8 @@
                     }
                     dataObj.clickNode = e.target;
                     e.target.fill(COLOR_OBJ.clickColor);
+                    setScaleOffset(e);
+                    stageObj.stage.batchDraw();
                 });
                 // 滚动
                 stageObj.stage.on('wheel', (e) => {
@@ -123,8 +130,17 @@
                         }
                         scale -= .2;
                     }
+                    stageObj.stage.setAttrs({
+                        offset: {
+                            x: scaleOffset.x,
+                            y: scaleOffset.y
+                        },
+                        x: scaleOffset.x / 2,
+                        y: scaleOffset.y / 3
+                    });
                     stageObj.stage.scaleX(scale);
                     stageObj.stage.scaleY(scale);
+                    stageObj.stage.batchDraw();
                 });
                 // 移上来
                 stageObj.stage.on('mousemove', e => {
@@ -137,8 +153,17 @@
                     dataObj.frameOffset.x = (target.getX() + NODE_WIDTH_HEIGHT) * scale + stageObj.stage.getX();
                     dataObj.frameOffset.y = (target.getY() + NODE_WIDTH_HEIGHT) * scale + stageObj.stage.getY();
 
-                    dataObj.frameOffset.show = true;
+                    // dataObj.frameOffset.show = true;
+                });
+                stageObj.stage.on('dragend', () => {
+                    // console.log(e);
                 })
+            }
+
+            function setScaleOffset(e) {
+                scaleOffset.x = e.target.getX();
+                scaleOffset.y = e.target.getY();
+                console.log(scaleOffset);
             }
 
             // 构建地图图片
