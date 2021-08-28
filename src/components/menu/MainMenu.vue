@@ -41,10 +41,10 @@
             }
         },
         setup() {
-            const ROUTER = useRouter();
+            const route = useRouter();
 
             function selectMenu(name) {
-                ROUTER.push({
+                route.push({
                     name: name
                 })
             }

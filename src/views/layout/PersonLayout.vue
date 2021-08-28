@@ -1,6 +1,10 @@
 <template>
     <div>
-        <ny-menu />
+        <ny-menu>
+            <template #default>
+                <div style="height: 100vh;">adfsa</div>
+            </template>
+        </ny-menu>
         <el-header class="header">
             <ny-head>
                 <template #default>

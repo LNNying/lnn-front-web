@@ -1,6 +1,8 @@
 <template>
     <div class="ny-head-title">
-        <img src="../../../assets/sys/mouse.png"/>
+        <div class="ny-img">
+            <img src="../../../assets/sys/mouse.png"/>
+        </div>
         <div class="ny-title">{{ title }}</div>
     </div>
 </template>
@@ -27,11 +29,22 @@
         height: 100%;
         display: flex;
         line-height: 60px;
-        img {
-            margin-top: 10px;
+        .ny-img {
             width: 40px;
             height: 40px;
+            border-radius: 50%;
+            margin-top: 10px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+                transition: transform .5s;
+                &:hover {
+                    transform: scale(1.5);
+                }
+            }
         }
+
         .ny-title {
             margin-left: 20px;
             font-weight: bold;

@@ -1,8 +1,8 @@
 <template>
     <div class="ny-login">
-        <span>登录</span>
+        <span>进入园区</span>
         <span>|</span>
-        <span>注册</span>
+        <span>开通权限</span>
     </div>
 </template>
 
@@ -21,6 +21,7 @@
         }
         span:nth-child(1), span:nth-child(3) {
             cursor: pointer;
+            font-weight: bold;
             &:hover {
                 color: #046EFA;
             }

@@ -3,7 +3,7 @@ export default  {
      * 项目标题
      * document.title
      */
-    title: '存储系统 v1.0',
+    title: 'LNN(NY)知识集合站',
     /**
      * 底部版权
      */

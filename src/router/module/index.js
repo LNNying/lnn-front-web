@@ -7,6 +7,7 @@
  */
 
 import Layout from '@/views/layout/DefaultLayout'
+import Person from '@/views/layout/PersonLayout'
 
 const homeRouter = {
     path: '/',
@@ -152,10 +153,58 @@ const kownRouter = {
     ]
 };
 
+const httpRouter = {
+    path: '/http',
+    name: 'http',
+    component: Layout,
+    meta: {
+        title: '网络知识',
+        icon: 'home-2-line'
+    },
+    children: [
+        {
+            path: '/axios',
+            name: 'axios',
+            component: () => import('@/views/axios/TestAxios.vue'),
+            meta: {
+                title: 'Axios使用',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        }
+    ]
+};
+
+const personRouter = {
+    path: '/person',
+    name: 'person',
+    component: Person,
+    meta: {
+        title: '网络知识',
+        icon: 'home-2-line'
+    },
+    children: [
+        {
+            path: '/info',
+            name: 'info',
+            component: () => import('@/views/person/Info.vue'),
+            meta: {
+                title: '个人信息',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        }
+    ]
+};
+
 
 export default [
     homeRouter,
     loginRouter,
     baseRouter,
-    kownRouter
+    kownRouter,
+    httpRouter,
+    personRouter
 ];

@@ -1,6 +1,7 @@
+@import "assets/icons/iconfont.css";
 @font-face {
-  font-family: gobal-font; // fzlthk
-  src: url("../src/assets/fonts/font5.ttf");
+  font-family: 'fontname';
+  src: url('./assets/fonts/youshe.ttf')
 }
 
 * {
@@ -9,7 +10,9 @@
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: 微软雅黑;
+  font-size: 14px;
+  position: relative;
 }
 
 .el-menu {
@@ -18,4 +21,15 @@ body {
 
 .box-page {
   margin: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+//滚动条的滑块
+::-webkit-scrollbar-thumb {
+  background-color: #a1a3a9;
+  border-radius: 3px;
 }

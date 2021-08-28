@@ -11,7 +11,9 @@
             :close-on-click-modal="false"
             destroy-on-close
             @close="isDrawer = false">
-        <span>我来啦!</span>
+        <div class="ny-menu">
+            <slot></slot>
+        </div>
     </el-drawer>
 </template>
 
@@ -34,6 +36,13 @@
 
 <style lang="less" scoped>
     @border-color: rgb(229, 231, 236);
+    .ny-menu {
+        width: 100%;
+        height: calc(100vh - 100px);
+        padding: 10px 15px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
     .ny-drawer-open {
         position: absolute;
         width: 10px;
