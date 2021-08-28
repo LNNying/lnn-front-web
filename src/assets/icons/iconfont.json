@@ -1,0 +1,16 @@
+{
+  "id": "2774509",
+  "name": "ny",
+  "font_family": "iconfont",
+  "css_prefix_text": "ny-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "19729297",
+      "name": "展开",
+      "font_class": "outdent",
+      "unicode": "ec06",
+      "unicode_decimal": 60422
+    }
+  ]
+}
