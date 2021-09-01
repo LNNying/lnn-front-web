@@ -1,42 +1,37 @@
 <template>
-    <el-container class="ny-main">
-        <el-aside class="ny-menu" width="250px">
-            <main-menu :menu-list="menuList"></main-menu>
-        </el-aside>
-        <el-container>
-            <el-header class="ny-header">Header</el-header>
-            <el-main class="ny-main">
-                <router-view v-slot="{ Component }">
-                    <keep-alive>
-                        <component :is="Component" />
-                    </keep-alive>
-                </router-view>
-            </el-main>
-        </el-container>
-    </el-container>
+    <div>
+        <el-header class="header">
+            <ny-head>
+                <template #default>
+                    <ny-head-title />
+                    <ny-login />
+                </template>
+            </ny-head>
+        </el-header>
+        <el-main class="container-login">
+            <router-view v-slot="{ Component }">
+                <keep-alive>
+                    <component :is="Component" />
+                </keep-alive>
+            </router-view>
+        </el-main>
+    </div>
 </template>
 
 <script>
-    import MainMenu from "../../components/menu/MainMenu";
-    import {computed, onMounted} from 'vue'
-    import {useStore} from 'vuex'
+    import NyHead from "./compont/NyHead";
+    import NyHeadTitle from "./compont/NyHeadTitle";
+    import NyLogin from "./compont/NyLogin";
     export default {
         name: "DefaultLayout",
-        components: {MainMenu},
-        setup() {
-            const STORE = useStore();
-            let menuList = computed(() => STORE.getters['index/menuList']);
-
-            onMounted(() => {
-
-            });
-            return {
-                menuList,
-            }
-        }
+        components: {NyLogin, NyHeadTitle, NyHead}
     }
 </script>
 
 <style scoped lang="less">
-@import "./style/defaultLayout.less";
+@import "./style/layout.less";
+    .container-login {
+        height: calc(100vh - 60px);
+        overflow: hidden;
+    }
 </style>

@@ -13,7 +13,7 @@ const homeRouter = {
     path: '/',
     name: 'Home',
     redirect: '/home',
-    component: Layout,
+    component: Person,
     meta: {
         title: '首页',
         hideInMenu: true
@@ -33,18 +33,25 @@ const homeRouter = {
     ]
 };
 const loginRouter = {
-    path: '/login',
-    name: 'login',
+    path: '/login-box',
+    name: 'login-box',
+    component: Layout,
     meta: {
         title: 'Login - 登录',
         hideInMenu: true
     },
-    component: () => import('@/views/login/Login.vue')
+    children: [
+        {
+            path: '/login',
+            name: 'login',
+            component: () => import('@/views/login/Login.vue'),
+        }
+    ]
 };
 const baseRouter = {
     path: '/base',
     name: 'base',
-    component: Layout,
+    component: Person,
     meta: {
         title: '开发构造模板',
         icon: 'home-2-line'
@@ -133,7 +140,7 @@ const baseRouter = {
 const kownRouter = {
     path: '/kown',
     name: 'kown',
-    component: Layout,
+    component: Person,
     meta: {
         title: '知识点',
         icon: 'home-2-line'
@@ -156,7 +163,7 @@ const kownRouter = {
 const httpRouter = {
     path: '/http',
     name: 'http',
-    component: Layout,
+    component: Person,
     meta: {
         title: '网络知识',
         icon: 'home-2-line'

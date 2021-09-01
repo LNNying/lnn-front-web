@@ -2,7 +2,7 @@
     <div>
         <ny-menu>
             <template #default>
-                <div style="height: 100vh;">adfsa</div>
+                <main-menu :menu-list="menuList" />
             </template>
         </ny-menu>
         <el-header class="header">
@@ -13,9 +13,13 @@
                 </template>
             </ny-head>
         </el-header>
-        <el-container class="container">
-            <router-view />
-        </el-container>
+        <el-main class="container">
+            <router-view v-slot="{ Component }">
+                <keep-alive>
+                    <component :is="Component" />
+                </keep-alive>
+            </router-view>
+        </el-main>
     </div>
 </template>
 
@@ -24,24 +28,22 @@
     import NyHeadTitle from "./compont/NyHeadTitle";
     import NyLogin from "./compont/NyLogin";
     import NyMenu from "./compont/NyMenu";
+    import MainMenu from "../../components/menu/MainMenu";
+    import {computed} from 'vue';
+    import {useStore} from 'vuex';
     export default {
         name: "PersonLayout",
-        components: {NyMenu, NyLogin, NyHeadTitle, NyHead}
+        components: {MainMenu, NyMenu, NyLogin, NyHeadTitle, NyHead},
+        setup() {
+            const store = useStore();
+            let menuList = computed(() => store.getters['index/menuList']);
+            return {
+                menuList
+            };
+        }
     }
 </script>
 
 <style lang="less" scoped>
-    .header {
-        background-color: #fff;
-        border-bottom: 1px solid #dcdfe6;
-        display: flex;
-        justify-content: space-around;
-        padding: 0;
-    }
-    .container {
-        padding: 10px;
-        height: calc(100vh - 60px);
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
+    @import "./style/layout.less";
 </style>

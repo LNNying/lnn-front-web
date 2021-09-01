@@ -1,6 +1,7 @@
 <template>
     <el-input v-model="rotate" style="width: 200px;" />
     <el-button type="primary" style="margin-left: 10px" @click="setRotate">旋转</el-button>
+    <el-button type="primary" style="margin-left: 10px" @click="setRotate">旋转</el-button>
     <div id="container" class="map"></div>
 </template>
 
@@ -128,5 +129,6 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
+        border: 1px solid red;
     }
 </style>

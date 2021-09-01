@@ -1,13 +1,9 @@
 <template>
     <div class="ny-main-menu">
-        <div class="ny-menu-title">
-            这是一个菜单头
-        </div>
         <el-menu
                 class="ny-menu"
-                background-color="#545c64"
-                text-color="#fff"
-                active-text-color="#ffd04b"
+                text-color="rgb(64, 158, 255)"
+                :unique-opened="true"
                 @select="selectMenu"
         >
             <template v-for="(item, index) in menuList">
@@ -60,7 +56,7 @@
 
 <style lang="less" scoped>
     .ny-main-menu {
-        background: #545c64;
+        background: #ffff;
         height: 100%;
         .ny-menu-title {
             height: 60px;

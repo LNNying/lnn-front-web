@@ -39,7 +39,7 @@
     .ny-menu {
         width: 100%;
         height: calc(100vh - 100px);
-        padding: 10px 15px;
+        padding: 10px 10px;
         overflow-x: hidden;
         overflow-y: scroll;
     }
