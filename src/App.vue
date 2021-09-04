@@ -13,7 +13,7 @@
             const router = useRouter();
 
             function checkToken() {
-                const token = localStorage.getItem('token');
+                const token = localStorage.getItem('token-ny');
                 const validData = token.split(';');
                 if (token && validData.includes('ny')) {
                     return;

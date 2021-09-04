@@ -48,12 +48,12 @@ const loginRouter = {
         }
     ]
 };
-const baseRouter = {
-    path: '/base',
-    name: 'base',
+const konvaRouter = {
+    path: '/konva',
+    name: 'konva',
     component: Person,
     meta: {
-        title: '开发构造模板',
+        title: 'Konva开发',
         icon: 'home-2-line'
     },
     children: [
@@ -160,6 +160,40 @@ const kownRouter = {
     ]
 };
 
+const echartRouter = {
+    path: '/echart',
+    name: 'echart',
+    component: Person,
+    meta: {
+        title: 'Echart体系',
+        icon: 'home-2-line'
+    },
+    children: [
+        {
+            path: '/echart-title',
+            name: 'echart-title',
+            component: () => import('@/views/echart/EchartsTitle.vue'),
+            meta: {
+                title: 'echart Title配置',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        },
+        {
+            path: '/echart-legend',
+            name: 'echart-legend',
+            component: () => import('@/views/echart/EchartsLegend.vue'),
+            meta: {
+                title: 'echart Legend配置',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        }
+    ]
+};
+
 const httpRouter = {
     path: '/http',
     name: 'http',
@@ -210,7 +244,8 @@ const personRouter = {
 export default [
     homeRouter,
     loginRouter,
-    baseRouter,
+    konvaRouter,
+    echartRouter,
     kownRouter,
     httpRouter,
     personRouter
