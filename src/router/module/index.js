@@ -217,21 +217,21 @@ const httpRouter = {
     ]
 };
 
-const personRouter = {
-    path: '/person',
-    name: 'person',
+const plugRouter = {
+    path: '/plug',
+    name: 'plug',
     component: Person,
     meta: {
-        title: '网络知识',
+        title: '系统插件',
         icon: 'home-2-line'
     },
     children: [
         {
-            path: '/info',
-            name: 'info',
-            component: () => import('@/views/person/Info.vue'),
+            path: '/codemirror',
+            name: 'codemirror',
+            component: () => import('@/views/codemirror/CodeMirror.vue'),
             meta: {
-                title: '个人信息',
+                title: 'CodeMirror编辑器',
                 icon: 'home-2-line',
                 noClosable: true,
                 noKeepAlive: true
@@ -248,5 +248,5 @@ export default [
     echartRouter,
     kownRouter,
     httpRouter,
-    personRouter
+    plugRouter
 ];
