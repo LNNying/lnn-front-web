@@ -201,12 +201,12 @@
             <p>symbolRotate：图形旋转角度 默认 inherit number string
                 <el-input-number v-model="symbolRotate" :min="1" size="mini" class="margin-left-10 width-150" controls-position="right" @change="init" />
             </p>
-            <p>formatter：用来格式图例文本 string 'legend {name}' function：(namme) = {return 'legend' + name}
-                <el-select v-model="formatter" size="mini" class="margin-left-10 width-150" @change="init">
-                    <el-option value="string" label="字符串形式" />
-                    <el-option value="function" label="Function形式" />
-                </el-select>
-            </p>
+            <!--<p>formatter：-->
+                <!--<el-select v-model="formatter" size="mini" class="margin-left-10 width-150" @change="init">-->
+                    <!--<el-option value="string" label="字符串形式" />-->
+                    <!--<el-option value="function" label="Function形式" />-->
+                <!--</el-select>-->
+            <!--</p>-->
             <p>selectedMode：图例选择模式 控制是否可以通过点击图例改变系列的显示状态 默认 true 可选
                 <el-select v-model="selectedMode" size="mini" class="margin-left-10 width-150" @change="init">
                     <el-option :value="true" label="true" />
@@ -365,7 +365,7 @@
                 </span> <br />
                 <span class="margin-left-20">
                     overflow：文本超出是否截断 width设置时才有效
-                    <el-select v-model="textStyle.textBorderType" size="mini" class="margin-left-10 width-150" @change="init">
+                    <el-select v-model="textStyle.overflow" size="mini" class="margin-left-10 width-150" @change="init">
                         <el-option value="none" label="none" />
                          <el-option value="truncate" label="truncate(截断)" />
                          <el-option value="break" label="break(换行)" />
@@ -382,7 +382,76 @@
                           <el-option value="none" label="none" />
                           <el-option value="truncate" label="truncate(截断)" />
                     </el-select>
+                </span> <br />
+                <span class="margin-left-20">
+                    rich 可以自定义富文本样式。利用富文本样式，可以在标签中做出非常丰富的效果 与formatter一起用
+                    <br /> formatter 用来格式图例文本 string 'legend {name}' function：(namme) = {return 'legend' + name}
+                    用法 <pre>
+                    formatter: {return ['{a|这段文本采用样式a}','{b|这段文本采用样式b}这段用默认样式{x|这段用样式x}'].join('\n'),}
+                    rich: {
+                        a: {
+                            fontSize: '12px
+                        }
+                    }
+                </pre>
                 </span>
+            </p>
+            <p>
+                tooltip：图例的tooltip配置，配置属性同tooltip一致
+                <el-switch v-model="tooltip.show" size="mini" class="margin-left-20" @change="init" />
+            </p>
+            <p>
+                icon：提供图形 circle 等 也可以为dataURI和图片
+                <el-select v-model="icon" size="mini" class="margin-left-10 width-150" @change="init">
+                    <el-option value="none" label="none" />
+                    <el-option value="circle" label="circle" />
+                    <el-option value="rect" label="rect" />
+                    <el-option value="roundRect" label="roundRect" />
+                    <el-option value="triangle" label="triangle" />
+                    <el-option value="diamond" label="diamond" />
+                    <el-option value="pin" label="pin" />
+                    <el-option value="arrow" label="arrow" />
+                </el-select>
+            </p>
+            <p>
+                data：数据项 可以为一个简单的数据 每一项对应serie中name的每一项，也可以为每一个数据项配置属性 <br />
+                <span class="margin-left-20">
+                    name：对应serie中的name
+                </span> <br />
+                <span class="margin-left-20">
+                    icon：图例形状
+                </span> <br />
+                <span class="margin-left-20">
+                    itemStyle：图例项的图形样式
+                </span> <br />
+                <span class="margin-left-20">
+                    lineStyle：图例项图形中线的样式，用于诸如折线图图例横线的样式设置
+                </span> <br />
+                <span class="margin-left-20">
+                    symbolRotate：图形旋转角度
+                </span> <br />
+                <span class="margin-left-20">
+                    textStyle：图例项的文本样式
+                </span>
+            </p>
+            <p>
+                backgroundColor：图例背景色。默认透明
+                <el-color-picker v-model="backgroundColor" size="mini" class="margin-left-10" @change="init" />
+            </p>
+            <p>
+                borderColor：边框颜色。默认 #ccc
+                <el-color-picker v-model="borderColor" size="mini" class="margin-left-10" @change="init" />
+            </p>
+            <p>
+                borderWidth： 边框宽度
+                <el-input-number v-model="borderWidth" :min="1" size="mini" class="margin-left-10 width-150" controls-position="right" @change="init" />
+            </p>
+            <p>
+                borderRadius：边框圆角 可以为 number array
+                <el-select v-model="borderRadius" size="mini" class="margin-left-10 width-150" @change="init">
+                    <el-option :value="5" label="5" />
+                    <el-option :value="[5, 10]" label="[5, 10]" />
+                </el-select>
             </p>
         </template>
     </echart-frame>
@@ -392,6 +461,7 @@
     import EchartFrame from "./component/EchartFrame";
     import {ref, reactive, toRefs, onMounted} from 'vue';
     import * as echarts from 'echarts';
+
     export default {
         name: "EchartsLegend",
         components: {EchartFrame},
@@ -410,15 +480,9 @@
                 '10': 10
             };
 
-            const formatterObj = {
-              'string': 'string {name}',
-              'function': function (name) {
-                  return `function ${name}`;
-              }
-            };
-
             let dataInfo = reactive({
                 show: true,
+                isEdit: false,
                 left: 'auto',
                 top: 'auto',
                 right: 'auto',
@@ -482,8 +546,17 @@
                     textShadowOffsetY: null,
                     overflow: 'none',
                     ellipsis: '',
-                    lineOverflow: 'none'
-                }
+                    lineOverflow: 'none',
+                    rich: ''
+                },
+                tooltip: {
+                    show: false
+                },
+                icon: '',
+                backgroundColor: 'transparent',
+                borderColor: '#ccc',
+                borderWidth: 1,
+                borderRadius: null
             });
 
             function init() {
@@ -519,7 +592,11 @@
                             opacity: dataInfo.itemStyle.opacity,
                         },
                         symbolRotate: dataInfo.symbolRotate,
-                        formatter: formatterObj[dataInfo.formatter],
+                        formatter: function (name) {
+                            let res = [];
+                            res.push(`{name|这是function${name}}`);
+                            return res.join('');
+                        },
                         selectedMode: dataInfo.selectedMode,
                         inactiveColor: dataInfo.inactiveColor,
                         inactiveBorderColor: dataInfo.inactiveBorderColor,
@@ -554,8 +631,23 @@
                             textShadowOffsetY: dataInfo.textStyle.textShadowOffsetY,
                             overflow: dataInfo.textStyle.overflow,
                             ellipsis: dataInfo.textStyle.ellipsis,
-                            lineOverflow: dataInfo.textStyle.lineOverflow
-                        }
+                            lineOverflow: dataInfo.textStyle.lineOverflow,
+                            rich: {
+                                name: {
+                                    fontSize: 12,
+                                    align: 'center',
+                                    lineHeight: 20
+                                }
+                            }
+                        },
+                        tooltip: {
+                            show: dataInfo.tooltip.show
+                        },
+                        icon: dataInfo.icon,
+                        backgroundColor: dataInfo.backgroundColor,
+                        borderColor: dataInfo.borderColor,
+                        borderWidth: dataInfo.borderWidth,
+                        borderRadius: dataInfo.borderRadius
                     },
                     grid: {
                       top: '20%'

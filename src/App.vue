@@ -14,9 +14,11 @@
 
             function checkToken() {
                 const token = localStorage.getItem('token-ny');
-                const validData = token.split(';');
-                if (token && validData.includes('ny')) {
-                    return;
+                if (token) {
+                    const validData = token.split(';');
+                    if (validData.includes('ny')) {
+                        return;
+                    }
                 }
                 router.push({
                     path: '/login'
