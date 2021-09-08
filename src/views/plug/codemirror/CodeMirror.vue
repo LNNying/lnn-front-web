@@ -183,18 +183,16 @@
 </template>
 
 <script>
-    import * as CodeMirror from 'codemirror/lib/codemirror'
-    import 'codemirror/addon/lint/lint.css'
-    import 'codemirror/lib/codemirror.css'
-    import 'codemirror/theme/rubyblue.css'
-    import 'codemirror/theme/material-ocean.css'
-    import 'codemirror/mode/javascript/javascript'
-    import 'codemirror/addon/lint/lint'
-    import 'codemirror/addon/lint/json-lint'
+    import * as CodeMirror from 'codemirror/lib/codemirror';
+    import 'codemirror/addon/lint/lint.css';
+    import 'codemirror/lib/codemirror.css';
+    import 'codemirror/theme/rubyblue.css';
+    import 'codemirror/mode/javascript/javascript';
+    import 'codemirror/addon/lint/lint';
+    import 'codemirror/addon/lint/json-lint';
     import {ref, onMounted} from 'vue';
     export default {
         name: "CodeMirror",
-        // components: {CodeMirror},
         setup() {
             let mirror = ref(null);
             let codeMirror = null;
@@ -280,8 +278,10 @@
 </script>
 
 <style lang="less">
+    @result-back-color: #cbcbcb;
+    @code-back-color: #1e241a;
     .content {
-        background-color: #1e241a;
+        background-color: @code-back-color;
         width: 100%;
         height: calc(100vh - 100px);
         overflow-x: hidden;
@@ -305,7 +305,7 @@
     .result {
         width: 100%;
         height: calc(50vh - 60px);
-        background-color: #cbcbcb;
+        background-color: @result-back-color;
         margin-top: 10px;
         overflow-x: hidden;
         overflow-y: scroll;

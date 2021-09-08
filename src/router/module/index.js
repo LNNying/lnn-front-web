@@ -194,28 +194,28 @@ const echartRouter = {
     ]
 };
 
-const httpRouter = {
-    path: '/http',
-    name: 'http',
-    component: Person,
-    meta: {
-        title: '网络知识',
-        icon: 'home-2-line'
-    },
-    children: [
-        {
-            path: '/axios',
-            name: 'axios',
-            component: () => import('@/views/axios/TestAxios.vue'),
-            meta: {
-                title: 'Axios使用',
-                icon: 'home-2-line',
-                noClosable: true,
-                noKeepAlive: true
-            }
-        }
-    ]
-};
+// const httpRouter = {
+//     path: '/http',
+//     name: 'http',
+//     component: Person,
+//     meta: {
+//         title: '网络知识',
+//         icon: 'home-2-line'
+//     },
+//     children: [
+//         {
+//             path: '/axios',
+//             name: 'axios',
+//             component: () => import('@/views/axios/IntroAxios.vue'),
+//             meta: {
+//                 title: 'Axios使用',
+//                 icon: 'home-2-line',
+//                 noClosable: true,
+//                 noKeepAlive: true
+//             }
+//         }
+//     ]
+// };
 
 const plugRouter = {
     path: '/plug',
@@ -229,9 +229,20 @@ const plugRouter = {
         {
             path: '/codemirror',
             name: 'codemirror',
-            component: () => import('@/views/codemirror/CodeMirror.vue'),
+            component: () => import('@/views/plug/codemirror/CodeMirror.vue'),
             meta: {
                 title: 'CodeMirror编辑器',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        },
+        {
+            path: '/axios',
+            name: 'axios',
+            component: () => import('@/views/plug/axios/IntroAxios.vue'),
+            meta: {
+                title: 'Axios使用',
                 icon: 'home-2-line',
                 noClosable: true,
                 noKeepAlive: true
@@ -247,6 +258,6 @@ export default [
     konvaRouter,
     echartRouter,
     kownRouter,
-    httpRouter,
+    // httpRouter,
     plugRouter
 ];
