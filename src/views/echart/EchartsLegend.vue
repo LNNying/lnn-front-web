@@ -453,6 +453,116 @@
                     <el-option :value="[5, 10]" label="[5, 10]" />
                 </el-select>
             </p>
+            <p>
+                shadowBlur：图形阴影的模糊大小。该属性配合 shadowColor,shadowOffsetX, shadowOffsetY 一起设置图形的阴影效果。
+                此配置项生效的前提是，设置了 show: true 以及值不为 tranparent 的背景色 backgroundColor。
+            </p>
+            <p>
+                shadowColor：整体阴影颜色
+            </p>
+            <p>
+                shadowOffsetX：水平阴影偏移量
+            </p>
+            <p>
+                shadowOffsetY：垂直阴影偏移量
+            </p>
+            <p>
+                scrollDataIndex：legend.type 为 'scroll' 时有效。图例当前最左上显示项的 dataIndex。setOption 时指定此项的话，可决定当前图例滚动到哪里。
+                但是，如果仅仅想改变图例翻页，一般并不调用 setOption（因为这太重量了），仅仅使用 action legendScroll 即可。
+            </p>
+            <p>
+                pageButtonItemGap：legend.type 为 'scroll' 时有效。图例控制块中，按钮和页信息之间的间隔。
+            </p>
+            <p>
+                pageButtonGap：legend.type 为 'scroll' 时有效。图例控制块和图例项之间的间隔。
+            </p>
+            <p>
+                pageButtonPosition：legend.type 为 'scroll' 时有效。图例控制块的位置。可选值为：start(控制块左或上) end(控制块右或下)
+            </p>
+            <p>
+                pageFormatter：(string function) legend.type 为 'scroll' 时有效。图例控制块中，页信息的显示格式。默认为 '{current}/{total}'，其中 {current} 是当前页号（从 1 开始计数），{total} 是总页数。
+                如果 pageFormatter 使用函数，须返回字符串，参数为：
+                <span>
+                    <pre>
+                        {
+                            current: number,
+                            total: number
+                        }
+                    </pre>
+                </span>
+            </p>
+            <p>
+                pageIcons：legend.type 为 'scroll' 时有效。图例控制块的图标。 object <br />
+                <span class="margin-left-20">
+                    horizontal：array legend.orient 为 'horizontal' 时的翻页按钮图标。
+                    是一个数组，表示 [previous page button, next page button]。默认值为 ['M0,0L12,-10L12,10z', 'M0,0L-12,-10L-12,10z']，
+                    数组中每项，可以通过 'image://url' 设置为图片，其中 URL 为图片的链接，或者 dataURI。
+                </span> <br />
+                <span class="margin-left-20">
+                    vertical：array legend.orient 为 'vertical' 时的翻页按钮图标。
+                    是一个数组，表示 [previous page button, next page button]。默认值为 ['M0,0L20,0L10,-20z', 'M0,0L20,0L10,20z']，
+                    数组中每项，可以通过 'image://url' 设置为图片，其中 URL 为图片的链接，或者 dataURI。
+                </span>
+            </p>
+            <p>
+                pageIconColor：legend.type 为 'scroll' 时有效。 string 默认 #2f4554 翻页按钮的颜色。
+            </p>
+            <p>
+                pageIconInactiveColor：legend.type 为 'scroll' 时有效。 string 默认 #aaa 翻页按钮不激活时（即翻页到头时）的颜色。
+            </p>
+            <p>
+                pageIconSize：egend.type 为 'scroll' 时有效。 number array 默认 15 翻页按钮的大小。可以是数字，也可以是数组，如 [10, 3]，表示 [宽，高]。
+            </p>
+            <p>
+                pageTextStyle：legend.type 为 'scroll' 时有效。图例页信息的文字样式。 object 与之前的text样式类似
+            </p>
+            <p>
+                animation：图例翻页是否使用动画。Boolean
+            </p>
+            <p>
+                animationDurationUpdate：图例翻页时的动画时长。 number
+            </p>
+            <p>
+                emphasis：object <br />
+                <span class="margin-left-20">
+                    selectorLabel：object <br />
+                    <span class="margin-left-20">
+                        show：是否显示标签。<a href="https://echarts.apache.org/zh/option.html#legend.emphasis">查看更多属性</a>
+                    </span>
+                </span>
+            </p>
+            <p>
+                selector：图例组件中的选择器按钮，目前包括全选和反选两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标
+                <span>
+                    <pre>
+                        selector: [{
+                            type: 'all or inverse',
+                            // 可以是任意你喜欢的 title
+                            title: '全选'
+                        },{
+                            type: 'inverse',
+                            title: '反选'
+                        }]
+                        // 或
+                        selector: true
+                        // 或
+                        selector: ['all', 'inverse']
+                    </pre>
+                </span>
+            </p>
+            <p>
+                selectorLabel：选择器按钮的文本标签样式，默认显示。 <a href="https://echarts.apache.org/zh/option.html#legend.selector">查看更多属性</a>
+            </p>
+            <p>
+                selectorPosition：string 选择器的位置，可以放在图例的尾部或者头部，对应的值分别为 'end' 和 'start'。默认情况下，
+                图例横向布局的时候，选择器放在图例的尾部；图例纵向布局的时候，选择器放在图例的头部。
+            </p>
+            <p>
+                selectorItemGap：number 默认 7 选择器按钮之间的间隔。
+            </p>
+            <p>
+                selectorButtonGap：number 默认 10 选择器按钮与图例组件之间的间隔。
+            </p>
         </template>
     </echart-frame>
 </template>

@@ -2,8 +2,9 @@
     <div class="ny-main-menu">
         <el-menu
                 class="ny-menu"
-                text-color="rgb(64, 158, 255)"
+                text-color="#9D9D9D"
                 :unique-opened="true"
+                :default-active="activeMenu"
                 @select="selectMenu"
         >
             <template v-for="(item, index) in menuList">
@@ -26,7 +27,6 @@
 </template>
 
 <script>
-    import {onMounted} from 'vue';
     import {useRouter} from 'vue-router'
     export default {
         name: "MainMenu",
@@ -34,6 +34,9 @@
             menuList: {
                 Array,
                 default: () => []
+            },
+            activeMenu: {
+                String
             }
         },
         setup() {
@@ -44,8 +47,6 @@
                     name: name
                 })
             }
-            onMounted(() => {
-            });
 
             return {
                 selectMenu
@@ -54,7 +55,7 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     .ny-main-menu {
         background: #ffff;
         height: 100%;

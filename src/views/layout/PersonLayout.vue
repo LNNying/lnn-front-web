@@ -2,7 +2,7 @@
     <div>
         <ny-menu>
             <template #default>
-                <main-menu :menu-list="menuList" />
+                <main-menu :menu-list="menuList" :active-menu="$route.name" />
             </template>
         </ny-menu>
         <el-header class="header">

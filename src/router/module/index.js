@@ -190,6 +190,28 @@ const echartRouter = {
                 noClosable: true,
                 noKeepAlive: true
             }
+        },
+        {
+            path: '/echart-grid',
+            name: 'echart-grid',
+            component: () => import('@/views/echart/EchartsGrid.vue'),
+            meta: {
+                title: 'echart Grid配置',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
+        },
+        {
+            path: '/echart-xAxis',
+            name: 'echart-xAxis',
+            component: () => import('@/views/echart/EchartsXaxis.vue'),
+            meta: {
+                title: 'echart xAxis配置',
+                icon: 'home-2-line',
+                noClosable: true,
+                noKeepAlive: true
+            }
         }
     ]
 };

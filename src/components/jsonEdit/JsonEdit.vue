@@ -15,7 +15,7 @@
         name: "JsonEdit",
         props: {
           jsonData: {
-              String
+              Object
           }
         },
         setup(props) {
@@ -40,13 +40,18 @@
                 return codeMirror.getValue();
             }
 
+            function setJsonData(val) {
+                codeMirror.setValue(JSON.stringify(val, null, 2));
+            }
+
             onMounted(() => {
                 initMirror();
             });
 
             return {
                 mirror,
-                getJsonData
+                getJsonData,
+                setJsonData
             };
         }
     }

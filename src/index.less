@@ -1,4 +1,5 @@
 @import "assets/icons/iconfont.css";
+
 @result-back-color: #cbcbcb;
 @code-back-color: #1e241a;
 
@@ -20,6 +21,9 @@ body {
 
 .el-menu {
   border-right: none;
+  .el-menu-item.is-active {
+    background-color: rgb(236, 245, 255);
+  }
 }
 
 .box-page {
@@ -53,6 +57,10 @@ body {
   margin-left: 20px;
 }
 
+.margin-left-40 {
+  margin-left: 40px;
+}
+
 .padding-10 {
   padding: 10px;
 }
@@ -84,7 +92,14 @@ body {
   margin-left: 10px;
   border-radius: 2px;
   background-color: @code-back-color;
-  color: #FFF;
+  color: #d2d2d2;
+}
+
+.cust-height {
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: @code-back-color;
 }
 
 .CodeMirror {
